@@ -26,18 +26,28 @@ app.use((req, res, next) => {
 
 app.use(express.static(__dirname + '/public'));
 
+hbs.registerHelper('getCurrentYear', () => {
+    return new Date().getFullYear();
+  });
+  
+  
+
 app.get('/', (req, res) => {
     res.render('home.hbs',{
         pageTitle: 'Home Page',
-        welcome: 'Welcome',
-        currentDate: new Date().getFullYear()
+        welcome: 'Welcome'
     })
 });
 
 app.get('/about', (req, res) => {
     res.render('about.hbs',{
-        pageTitle: 'About Page',
-        currentDate: new Date().getFullYear()
+        pageTitle: 'About Page'
+    })
+});
+
+app.get('/projects', (req, res) => {
+    res.render('projects.hbs',{
+        pageTitle: 'Projects'
     })
 });
 
